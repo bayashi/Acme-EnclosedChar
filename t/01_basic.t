@@ -1,11 +1,18 @@
 use strict;
 use warnings;
+use utf8;
 use Test::More;
 
-use Acme::EnclosedChar;
+use Acme::EnclosedChar qw/penclose/;
 
-can_ok 'Acme::EnclosedChar', qw/new/;
+is penclose(), '';
+is penclose(undef), '';
 
-# write more tests
+is penclose('0'), '⓪';
+is penclose('1'), '①';
+is penclose('012345'), '⓪①②③④⑤';
+is penclose('0!12!34!5!'), '⓪!⑫!㉞!⑤!';
+is penclose('Perl'), 'Ⓟⓔⓡⓛ';
+is penclose('Rubyは1993/2/24生まれ'), 'Ⓡⓤⓑⓨは①⑨⑨③/②/㉔生まれ';
 
 done_testing;

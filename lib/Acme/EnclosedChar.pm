@@ -1,24 +1,67 @@
 package Acme::EnclosedChar;
 use strict;
 use warnings;
-use Carp qw/croak/;
+use utf8;
+use parent qw/Exporter/;
+our @EXPORT_OK = qw/penclose/;
 
 our $VERSION = '0.01';
 
-sub new {
-    my $class = shift;
-    my $args  = shift || +{};
+my %MAP;
+{
+    my @numbers = _s('⓪①②③④⑤⑥⑦⑧⑨');
+    my @double_digits = _s('⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲'
+                            . '⑳㉑㉒㉓㉔㉕㉖㉗㉘㉙'
+                            . '㉚㉛㉜㉝㉞㉟㊱㊲㊳㊴'
+                            . '㊵㊶㊷㊸㊹㊺㊻㊼㊽㊾㊿');
+    my @alphabet_uc = _s('ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ');
+    my @alphabet_lc = _s('ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ');
 
-    bless $args, $class;
+    for my $i (0..9) {
+        $MAP{numbers}->{$i} = shift @numbers;
+    }
+    for my $i (10..50) {
+        $MAP{double_digits}->{$i} = shift @double_digits;
+    }
+    for my $i ('A'..'Z') {
+        $MAP{alphabet_uc}->{$i}    = shift @alphabet_uc;
+        $MAP{alphabet_lc}->{lc $i} = shift @alphabet_lc;
+    }
+}
+
+sub _s { return split('', $_[0]); }
+
+sub penclose {
+    my $string = shift;
+
+    return '' if !defined($string) || $string eq '';
+
+    for my $dg (keys %{$MAP{double_digits}}) {
+        $string =~ s!([^\d])$dg([^\d])!$1$MAP{double_digits}->{$dg}$2!g;
+    }
+
+    for my $i (keys %{$MAP{numbers}}) {
+        $string =~ s!$i!$MAP{numbers}->{$i}!g;
+    }
+
+    for my $i ('A'..'Z') {
+        $string =~ s!$i!$MAP{alphabet_uc}->{$i}!g;
+        my $j = lc $i;
+        $string =~ s!$j!$MAP{alphabet_lc}->{$j}!g;
+    }
+
+    return $string;
 }
 
 1;
 
 __END__
 
+=encoding UTF-8
+
 =head1 NAME
 
-Acme::EnclosedChar - one line description
+Acme::EnclosedChar - Ⓔⓝⓒⓛⓞⓢⓔⓓ Ⓐⓛⓟⓗⓐⓝⓤⓜⓔⓡⓘⓒⓢ Ⓔⓝⓒⓞⓓⓔⓡ
 
 
 =head1 SYNOPSIS
@@ -29,6 +72,13 @@ Acme::EnclosedChar - one line description
 =head1 DESCRIPTION
 
 Acme::EnclosedChar is
+
+
+=head1 METHOD
+
+=head2 penclose($text)
+
+encode text into Enclosed Alphanumerics
 
 
 =head1 REPOSITORY
