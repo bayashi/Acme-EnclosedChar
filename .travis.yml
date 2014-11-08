@@ -10,7 +10,7 @@ perl:
 before_install:
   - cpanm -nq Devel::Cover::Report::Coveralls
 script:
-  perl Build.PL && ./Build build && cover -test
+  perl Build.PL && ./Build testcover
 after_success:
   - cover -report coveralls
 notifications:
