@@ -3,7 +3,12 @@ use warnings;
 use utf8;
 use Test::More;
 
-use Acme::EnclosedChar qw/enclose enclose_katakana enclose_week_ja enclose_kansuji/;
+use Acme::EnclosedChar qw/
+    enclose
+    enclose_katakana
+    enclose_week_ja
+    enclose_kansuji
+/;
 
 is enclose(), '';
 is enclose(undef), '';

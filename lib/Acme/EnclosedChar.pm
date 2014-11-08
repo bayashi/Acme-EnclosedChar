@@ -3,7 +3,12 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Exporter/;
-our @EXPORT_OK = qw/enclose enclose_katakana enclose_week_ja enclose_kansuji/;
+our @EXPORT_OK = qw/
+    enclose
+    enclose_katakana
+    enclose_week_ja
+    enclose_kansuji
+/;
 
 our $VERSION = '0.01';
 
