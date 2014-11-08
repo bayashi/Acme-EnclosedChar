@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Exporter/;
-our @EXPORT_OK = qw/penclose/;
+our @EXPORT_OK = qw/enclose/;
 
 our $VERSION = '0.01';
 
@@ -31,7 +31,7 @@ my %MAP;
 
 sub _s { return split('', $_[0]); }
 
-sub penclose {
+sub enclose {
     my $string = shift;
 
     return '' if !defined($string) || $string eq '';
@@ -76,7 +76,7 @@ Acme::EnclosedChar is
 
 =head1 METHOD
 
-=head2 penclose($text)
+=head2 enclose($text)
 
 encode text into Enclosed Alphanumerics
 
