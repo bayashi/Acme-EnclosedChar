@@ -8,6 +8,7 @@ use Acme::EnclosedChar qw/
     enclose_katakana
     enclose_week_ja
     enclose_kansuji
+    enclose_kanji
 /;
 
 is enclose(), '';
@@ -25,6 +26,8 @@ is enclose_katakana('アロハ'), '㋐㋺㋩';
 is enclose_week_ja('月曜から金曜まで'), '㊊曜から㊎曜まで';
 
 is enclose_kansuji('加藤一二三'), '加藤㊀㊁㊂';
+
+is enclose_kanji('夜は会社休み'), '㊰は会㊓㊡み';
 
 
 done_testing;

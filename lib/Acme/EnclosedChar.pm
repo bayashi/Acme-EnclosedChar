@@ -8,6 +8,7 @@ our @EXPORT_OK = qw/
     enclose_katakana
     enclose_week_ja
     enclose_kansuji
+    enclose_kanji
 /;
 
 our $VERSION = '0.01';
@@ -55,6 +56,13 @@ my %MAP;
         $MAP{kansuji}->{$i} = shift @kansuji_u;
     }
     $MAP{kansuji}->{list} = \@kansuji;
+
+    my @kanji   = _s('株有社名特財祝労秘男女適優印注頂休写正上中下左右医宗学監企資協夜');
+    my @kanji_u = _s('㊑㊒㊓㊔㊕㊖㊗㊘㊙㊚㊛㊜㊝㊞㊟㊠㊡㊢㊣㊤㊥㊦㊧㊨㊩㊪㊫㊬㊭㊮㊯㊰');
+    for my $i (@kanji) {
+        $MAP{kanji}->{$i} = shift @kanji_u;
+    }
+    $MAP{kanji}->{list} = \@kanji;
 }
 
 sub _s { return split('', $_[0]); }
@@ -117,6 +125,18 @@ sub enclose_kansuji {
     return $string;
 }
 
+sub enclose_kanji {
+    my $string = shift;
+
+    $string = enclose($string);
+
+    for my $i ( @{$MAP{kanji}->{list}} ) {
+        $string =~ s!$i!$MAP{kanji}->{$i}!g;
+    }
+
+    return $string;
+}
+
 1;
 
 __END__
@@ -155,6 +175,10 @@ Also Japanese day of week will be encoded.
 =head2 enclose_kansuji($decoded_text)
 
 Also Japanese kansuji will be encoded.
+
+=head2 enclose_kanji($decoded_text)
+
+Also Japanese kanji will be encoded.
 
 
 =head1 REPOSITORY
