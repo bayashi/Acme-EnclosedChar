@@ -159,12 +159,14 @@ Acme::EnclosedChar - Ⓔⓝⓒⓛⓞⓢⓔⓓ Ⓐⓛⓟⓗⓐⓝⓤⓜⓔⓡⓘ�
 
 =head1 SYNOPSIS
 
-    use Acme::EnclosedChar;
+    use Acme::EnclosedChar qw/enclose/;
+
+    Print enclose('Perl'); # Ⓟⓔⓡⓛ
 
 
 =head1 DESCRIPTION
 
-Acme::EnclosedChar is
+Acme::EnclosedChar generates Enclosed Alphanumerics.
 
 
 =head1 METHOD
@@ -208,7 +210,7 @@ Dai Okabayashi E<lt>bayashi@cpan.orgE<gt>
 
 =head1 SEE ALSO
 
-L<Other::Module>
+L<http://www.unicode.org/>
 
 
 =head1 LICENSE
