@@ -9,6 +9,7 @@ our @EXPORT_OK = qw/
     enclose_week_ja
     enclose_kansuji
     enclose_kanji
+    enclose_all
 /;
 
 our $VERSION = '0.01';
@@ -137,6 +138,14 @@ sub enclose_kanji {
     return $string;
 }
 
+sub enclose_all {
+    my $string = shift;
+
+    return enclose_katakana(
+            enclose_week_ja( enclose_kansuji( enclose_kanji($string) ) )
+    );
+}
+
 1;
 
 __END__
@@ -179,6 +188,10 @@ Also Japanese kansuji will be encoded.
 =head2 enclose_kanji($decoded_text)
 
 Also Japanese kanji will be encoded.
+
+=head2 enclose_all($decoded_text)
+
+enclose text as far as possible
 
 
 =head1 REPOSITORY

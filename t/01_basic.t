@@ -9,6 +9,7 @@ use Acme::EnclosedChar qw/
     enclose_week_ja
     enclose_kansuji
     enclose_kanji
+    enclose_all
 /;
 
 is enclose(), '';
@@ -28,6 +29,8 @@ is enclose_week_ja('月曜から金曜まで'), '㊊曜から㊎曜まで';
 is enclose_kansuji('加藤一二三'), '加藤㊀㊁㊂';
 
 is enclose_kanji('夜は会社休み'), '㊰は会㊓㊡み';
+
+is enclose_all('8月25日の水曜の夜中だよ！Bye!'), '⑧㊊㉕㊐の㊌曜の㊰㊥だよ！Ⓑⓨⓔ!';
 
 
 done_testing;
