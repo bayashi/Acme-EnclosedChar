@@ -76,7 +76,7 @@ Acme::EnclosedChar is
 
 =head1 METHOD
 
-=head2 enclose($text)
+=head2 enclose($decoded_text)
 
 encode text into Enclosed Alphanumerics
 
