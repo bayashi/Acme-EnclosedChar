@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Exporter/;
-our @EXPORT_OK = qw/enclose/;
+our @EXPORT_OK = qw/enclose enclose_katakana/;
 
 our $VERSION = '0.01';
 
@@ -27,6 +27,15 @@ my %MAP;
         $MAP{alphabet_uc}->{$i}    = shift @alphabet_uc;
         $MAP{alphabet_lc}->{lc $i} = shift @alphabet_lc;
     }
+
+    my @katakana = _s('アイウエオカキクケコサシスセソタチツテトナニヌネノ'
+                    . 'ハヒフヘホマミムメモヤユヨラリルレロワヰヱヲ');
+    my @katakana_u = _s('㋐㋑㋒㋓㋔㋕㋖㋗㋘㋙㋚㋛㋜㋝㋞㋟㋠㋡㋢㋣㋤㋥㋦㋧㋨'
+                        . '㋩㋪㋫㋬㋭㋮㋯㋰㋱㋲㋳㋴㋵㋶㋷㋸㋹㋺㋻㋼㋽㋾');
+    for my $i (@katakana) {
+        $MAP{katakana}->{$i} = shift @katakana_u;
+    }
+    $MAP{katakana}->{list} = \@katakana;
 }
 
 sub _s { return split('', $_[0]); }
@@ -48,6 +57,18 @@ sub enclose {
         $string =~ s!$i!$MAP{alphabet_uc}->{$i}!g;
         my $j = lc $i;
         $string =~ s!$j!$MAP{alphabet_lc}->{$j}!g;
+    }
+
+    return $string;
+}
+
+sub enclose_katakana {
+    my $string = shift;
+
+    $string = enclose($string);
+
+    for my $i ( @{$MAP{katakana}->{list}} ) {
+        $string =~ s!$i!$MAP{katakana}->{$i}!g;
     }
 
     return $string;
@@ -79,6 +100,10 @@ Acme::EnclosedChar is
 =head2 enclose($decoded_text)
 
 encode text into Enclosed Alphanumerics
+
+=head2 enclose_katakana($decoded_text)
+
+Also Japanese Katakana will be encoded.
 
 
 =head1 REPOSITORY
