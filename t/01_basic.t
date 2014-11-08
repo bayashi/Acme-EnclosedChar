@@ -3,7 +3,7 @@ use warnings;
 use utf8;
 use Test::More;
 
-use Acme::EnclosedChar qw/enclose enclose_katakana/;
+use Acme::EnclosedChar qw/enclose enclose_katakana enclose_week_ja enclose_kansuji/;
 
 is enclose(), '';
 is enclose(undef), '';
@@ -16,5 +16,10 @@ is enclose('Perl'), 'Ⓟⓔⓡⓛ';
 is enclose('Rubyは1993/2/24生まれ'), 'Ⓡⓤⓑⓨは①⑨⑨③/②/㉔生まれ';
 
 is enclose_katakana('アロハ'), '㋐㋺㋩';
+
+is enclose_week_ja('月曜から金曜まで'), '㊊曜から㊎曜まで';
+
+is enclose_kansuji('加藤一二三'), '加藤㊀㊁㊂';
+
 
 done_testing;

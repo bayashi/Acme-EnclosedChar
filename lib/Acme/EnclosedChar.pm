@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use utf8;
 use parent qw/Exporter/;
-our @EXPORT_OK = qw/enclose enclose_katakana/;
+our @EXPORT_OK = qw/enclose enclose_katakana enclose_week_ja enclose_kansuji/;
 
 our $VERSION = '0.01';
 
@@ -36,6 +36,20 @@ my %MAP;
         $MAP{katakana}->{$i} = shift @katakana_u;
     }
     $MAP{katakana}->{list} = \@katakana;
+
+    my @week_ja   = _s('月火水木金土日');
+    my @week_ja_u = _s('㊊㊋㊌㊍㊎㊏㊐');
+    for my $i (@week_ja) {
+        $MAP{week_ja}->{$i} = shift @week_ja_u;
+    }
+    $MAP{week_ja}->{list} = \@week_ja;
+
+    my @kansuji   = _s('一二三四五六七八九十');
+    my @kansuji_u = _s('㊀㊁㊂㊃㊄㊅㊆㊇㊈㊉');
+    for my $i (@kansuji) {
+        $MAP{kansuji}->{$i} = shift @kansuji_u;
+    }
+    $MAP{kansuji}->{list} = \@kansuji;
 }
 
 sub _s { return split('', $_[0]); }
@@ -74,6 +88,30 @@ sub enclose_katakana {
     return $string;
 }
 
+sub enclose_week_ja {
+    my $string = shift;
+
+    $string = enclose($string);
+
+    for my $i ( @{$MAP{week_ja}->{list}} ) {
+        $string =~ s!$i!$MAP{week_ja}->{$i}!g;
+    }
+
+    return $string;
+}
+
+sub enclose_kansuji {
+    my $string = shift;
+
+    $string = enclose($string);
+
+    for my $i ( @{$MAP{kansuji}->{list}} ) {
+        $string =~ s!$i!$MAP{kansuji}->{$i}!g;
+    }
+
+    return $string;
+}
+
 1;
 
 __END__
@@ -104,6 +142,14 @@ encode text into Enclosed Alphanumerics
 =head2 enclose_katakana($decoded_text)
 
 Also Japanese Katakana will be encoded.
+
+=head2 enclose_week_ja($decoded_text)
+
+Also Japanese day of week will be encoded.
+
+=head2 enclose_kansuji($decoded_text)
+
+Also Japanese kansuji will be encoded.
 
 
 =head1 REPOSITORY
