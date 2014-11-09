@@ -9,10 +9,13 @@ perl:
   - "5.8"
 before_install:
   - cpanm -nq Devel::Cover::Report::Coveralls
+  - cpanm -nq HTTP::Tiny
+  - cpanm -nq IO::Socket::SSL
+  - cpanm -nq Net::SSLeay
 script:
   perl Build.PL && ./Build build && cover -test
 after_success:
-  - cover -report coveralls 1>&2
+  - cover -report coveralls
 notifications:
   irc:
     channels:
