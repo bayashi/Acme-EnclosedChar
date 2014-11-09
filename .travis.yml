@@ -12,7 +12,7 @@ before_install:
 script:
   perl Build.PL && ./Build build && cover -test
 after_success:
-  - cover -report coveralls
+  - cover -report coveralls 1>&2
 notifications:
   irc:
     channels:
