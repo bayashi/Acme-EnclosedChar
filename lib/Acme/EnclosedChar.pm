@@ -12,7 +12,7 @@ our @EXPORT_OK = qw/
     enclose_all
 /;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 my %MAP;
 {
