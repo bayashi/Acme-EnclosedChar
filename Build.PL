@@ -33,6 +33,10 @@ my $builder = Module::Build->new(
       resources => {
         repository  => 'http://github.com/bayashi/Acme-EnclosedChar',
         bugtracker  => 'http://github.com/bayashi/Acme-EnclosedChar/issues',
+        x_IRC       => {
+            url => 'irc://chat.freenode.org/#bayadev',
+            web => 'http://webchat.freenode.net/?channels=%23bayadev',
+        },
       }
     },
     recursive_test_files => 1,

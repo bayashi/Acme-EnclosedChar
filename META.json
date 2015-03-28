@@ -49,6 +49,10 @@
       ],
       "repository" : {
          "url" : "http://github.com/bayashi/Acme-EnclosedChar"
+      },
+      "x_IRC" : {
+         "url" : "irc://chat.freenode.org/#bayadev",
+         "web" : "http://webchat.freenode.net/?channels=%23bayadev"
       }
    },
    "version" : "0.06"
