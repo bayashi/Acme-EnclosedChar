@@ -1,5 +1,8 @@
 Revision history for Perl extension Acme::EnclosedChar
 
+0.07    Sat Mar 28 15:06:53 JST 2015
+        - add x_IRC param in META for metacpan
+
 0.06    Sun Nov 16 20:54:41 JST 2014
         - more works double digit number fine(thanks Thomas)
 
