@@ -5,7 +5,7 @@ This is Perl module B<Acme::EnclosedChar>.
 
 =begin html
 
-<a href="http://travis-ci.org/bayashi/Acme-EnclosedChar"><img src="https://secure.travis-ci.org/bayashi/Acme-EnclosedChar.png?_t=1428123657"/></a> <a href="https://coveralls.io/r/bayashi/Acme-EnclosedChar"><img src="https://coveralls.io/repos/bayashi/Acme-EnclosedChar/badge.png?_t=1428123657&branch=master"/></a> <a href="http://cpants.cpanauthors.org/dist/Acme-EnclosedChar"><img src="http://cpants.cpanauthors.org/dist/Acme-EnclosedChar.png?_t=1428123657"/></a>
+<a href="http://travis-ci.org/bayashi/Acme-EnclosedChar"><img src="https://secure.travis-ci.org/bayashi/Acme-EnclosedChar.png?_t=1428140179"/></a> <a href="https://coveralls.io/r/bayashi/Acme-EnclosedChar"><img src="https://coveralls.io/repos/bayashi/Acme-EnclosedChar/badge.png?_t=1428140179&branch=master"/></a> <a href="http://cpants.cpanauthors.org/dist/Acme-EnclosedChar"><img src="http://cpants.cpanauthors.org/dist/Acme-EnclosedChar.png?_t=1428140179"/></a>
 
 =end html
 

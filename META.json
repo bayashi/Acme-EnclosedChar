@@ -36,7 +36,7 @@
    "provides" : {
       "Acme::EnclosedChar" : {
          "file" : "lib/Acme/EnclosedChar.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       }
    },
    "release_status" : "stable",
@@ -55,5 +55,5 @@
          "web" : "http://webchat.freenode.net/?channels=%23bayadev"
       }
    },
-   "version" : "0.08"
+   "version" : "0.09"
 }
