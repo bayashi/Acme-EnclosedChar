@@ -1,5 +1,9 @@
 Revision history for Perl extension Acme::EnclosedChar
 
+0.08    Sat Apr  4 14:04:11 JST 2015
+        - add kwalitee badge
+        - add LICENSE file
+
 0.07    Sat Mar 28 15:06:53 JST 2015
         - add x_IRC param in META for metacpan
 
