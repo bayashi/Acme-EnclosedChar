@@ -136,7 +136,7 @@ Acme::EnclosedChar - Ⓔⓝⓒⓛⓞⓢⓔⓓ Ⓐⓛⓟⓗⓐⓝⓤⓜⓔⓡⓘ�
 
     use Acme::EnclosedChar qw/enclose/;
 
-    Print enclose('Perl'); # Ⓟⓔⓡⓛ
+    print enclose('Perl'); # Ⓟⓔⓡⓛ
 
 
 =head1 DESCRIPTION
